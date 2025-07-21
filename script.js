@@ -27,7 +27,16 @@ function addResultText() {
     displayCurrent();
     analyzeNext();
 }
-
+function newRound() {
+    if (currentRound.length > 0) {
+        history.push(currentRound);
+        currentRound = [];
+        saveState();
+        displayHistory();
+        displayCurrent();
+        document.getElementById('suggestionText').innerText = '';
+    }
+}
 function setEye(type, value) {
     if (type === 'big') big = value;
     if (type === 'small') small = value;
