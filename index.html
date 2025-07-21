@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Baccarat รวมระบบ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Baccarat Tracker Pro + วิเคราะห์บาคาร่าของฉัน</h1>
+
+    <div id="controls">
+        <div>
+            <label>ผลจริง:</label>
+            <button onclick="addResult('P')">P</button>
+            <button onclick="addResult('B')">B</button>
+            <button onclick="addResult('T')">T</button>
+        </div>
+        <div>
+            <label>Big Eye:</label>
+            <button onclick="setEye('big', '🔴')">🔴</button>
+            <button onclick="setEye('big', '🔵')">🔵</button>
+        </div>
+        <div>
+            <label>Small:</label>
+            <button onclick="setEye('small', '🔴')">🔴</button>
+            <button onclick="setEye('small', '🔵')">🔵</button>
+        </div>
+        <div>
+            <label>Cockroach:</label>
+            <button onclick="setEye('cockroach', '🔴')">🔴</button>
+            <button onclick="setEye('cockroach', '🔵')">🔵</button>
+        </div>
+
+        <button onclick="addRow()">เพิ่มข้อมูล</button>
+        <button onclick="addSeparator()">แบ่งรอบใหม่</button>
+        <button onclick="resetData()">รีเซตข้อมูล</button>
+        <button onclick="downloadData()">บันทึกข้อมูล</button>
+    </div>
+
+    <input type="text" id="inputResult" placeholder="P,B,P หรือ PBPT">
+    <button onclick="addResultText()">เพิ่มผลจากช่องกรอก</button>
+    <button onclick="analyzeNext()">วิเคราะห์ตาถัดไป</button>
+    <div id="patternButtons">
+        <label>เลือกจำนวนตาย้อนหลัง:</label>
+        <button onclick="setPatternLength(5)">5</button>
+        <button onclick="setPatternLength(8)">8</button>
+        <button onclick="setPatternLength(10)">10</button>
+        <button onclick="setPatternLength(12)">12</button>
+        <button onclick="setPatternLength(15)">15</button>
+    </div>
+    <button onclick="toggleHistory()">เปิด/ปิด ดูประวัติย้อนหลัง</button>
+    <button onclick="backupData()">📥 สำรองข้อมูล</button>
+    <input type="file" id="importFile" onchange="importData(event)">
+    <div id="currentRound"><h2>รอบปัจจุบัน</h2><div id="currentResults"></div></div>
+    <div id="recommendation"><h2>คำแนะนำตาถัดไป</h2><div id="suggestionText"></div></div>
+    <div id="history" style="display:none;">
+        <h2>ประวัติแต่ละรอบ</h2>
+        <div id="historyRounds"></div>
+    </div>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ตา</th>
+                <th>ผลจริง</th>
+                <th>เค้ารอง</th>
+                <th>เค้าไพ่หลัก</th>
+                <th>คำแนะนำ</th>
+                <th>สถิติเคยออก</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
